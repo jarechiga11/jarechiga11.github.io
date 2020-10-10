@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn ci
+    - run: yarn install --frozen-lockfile
     - run: yarn run build
     - run: yarn run export
     
@@ -34,4 +34,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: out # The folder the action should deploy.
-        #CLEAN: true # Automatically remove deleted files from the deploy branch
+        CLEAN: true # Automatically remove deleted files from the deploy branch
